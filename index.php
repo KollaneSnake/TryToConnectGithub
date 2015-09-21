@@ -6,6 +6,7 @@
 </head>
 <body>
 	git-<a href="https://git-scm.com/book/ru/v1">book</a></br>
-	commit-
+	commit-</br>
+	vmc-view model controller</br>
 </body>
 </html>
