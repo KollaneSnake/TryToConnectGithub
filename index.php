@@ -1,12 +1,29 @@
+<?php
+	include once 'Model/Model.php';
+	$posts=get_all_posts();
+	?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>index</title>
+	<title>Document</title>
 </head>
 <body>
-	git-<a href="https://git-scm.com/book/ru/v1">book</a></br>
-	commit-</br>
-	vmc-view model controller</br>
+		
+
+	<h2>List of posts</h2>
+	<ul>
+		<?php
+
+			foreach ($posts as $post):
+		?>
+		<li>
+			<a href="#">
+				<?php echo $post['id'].'. '.$post['title'];?>
+			</a>
+		</li>
+		<?php endforeach; ?>
+	</ul>
 </body>
 </html>
