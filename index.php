@@ -1,5 +1,5 @@
 <?php
-	include once 'Model/Model.php';
+	include_once 'Model/Model.php';
 	$posts=get_all_posts();
 	?>
 
