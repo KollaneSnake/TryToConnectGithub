@@ -1,4 +1,8 @@
 <?php
+
+	/**
+	* Comment DataBase connecct
+	*/
 function open_database_connection()
 {
 	#making lonk descriptions
@@ -10,11 +14,17 @@ function open_database_connection()
 	#retur connection link
 	return $link;
 }
+	/**
+	* Comment DataBase connecct close
+	*/
 function close_database_connection($link)
 {
 	#close connection
 	mysql_close($link);
 }
+	/**
+	* Comment DataBase query
+	*/
 function get_all_posts()
 {
 	#opens connection to db
