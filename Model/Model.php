@@ -44,3 +44,16 @@ function get_all_posts()
 	close_database_connection($link);
 	return $posts;
 }
+function get_all_post($id)
+{
+	#opens connection to db
+	$link=open_database_connection();
+	#query for db
+	$sql="SELECT * FROM Post WHERE id='$id'";
+	#giving the query to execute
+	$result=mysql_query($sql,$link);
+	#close connection to db
+	$post=mysql_fetch_assoc($result);
+	close_database_connection($link);
+	return $posts;
+}
