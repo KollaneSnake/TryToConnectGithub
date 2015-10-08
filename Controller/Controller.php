@@ -17,10 +17,15 @@
 		$post=get_post($id);
 		require "View/Templates/show.php";
 	}
-	function render_template($path, array $args)
+	function add_action($id)
 	{
-		extract($args);
-
+		if (isset($_POST['add_autor'])) {
+			add_post();
+		}
+		#add_post();
+		require "View/Templates/admin.php";
+		$posts=get_all_posts();
+		require "View/Templates/List.php";
 	}
 
 ?>

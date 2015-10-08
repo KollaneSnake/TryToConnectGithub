@@ -57,3 +57,21 @@ function get_post($id)
 	close_database_connection($link);
 	return $post;
 }
+function add_post()
+{
+	$autor=$_REQUEST['add_autor'];
+	$title=$_REQUEST['add_title'];
+	$date=$_REQUEST['add_date'];
+	$content=$_REQUEST['add_content'];
+
+	$link=open_database_connection();
+	#query for db
+	$sql="INSERT INTO Post (autor, date, title, content) 
+	VALUES ('$autor','$date','$title','$content')";
+	#giving the query to execute
+	$result=mysql_query($sql,$link);
+	#close connection to db
+	#$post=mysql_fetch_assoc($result);
+	close_database_connection($link);
+	#return $post;
+}

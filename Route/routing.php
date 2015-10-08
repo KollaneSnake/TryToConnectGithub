@@ -10,7 +10,7 @@
 
 	echo "<br>newUri ".$uri;
 
-	if(($uri=='/2KTVRp_2015/Kiir/') OR ($uri=='/2KTVRp_2015/Kiir/index.php/'))
+	if(($uri=='/2KTVRp_2015/Kiir/') OR ($uri=='/2KTVRp_2015/Kiir/index.php/') OR ($uri=='/2KTVRp_2015/Kiir/index.php'))
 	{
 		list_action();
 	}
@@ -21,6 +21,10 @@
 	elseif ('/2KTVRp_2015/Kiir/index.php/show'==$uri) 
 	{
 		show_action($_REQUEST['id']);
+	}
+	elseif ('/2KTVRp_2015/Kiir/index.php/add'==$uri)
+	{
+		add_action($_REQUEST['id']);
 	}
 
 

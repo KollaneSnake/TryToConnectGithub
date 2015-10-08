@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 	<h2>Administration</h2>
-	<form action="index.php/add" method="POST" name="form1">
+	<form action="add" method="POST" name="form1">
 		<table>
 			<tr>
 				<td>Autor:</td>
@@ -8,7 +8,7 @@
 			</tr>
 			<tr>
 				<td>Date:</td>
-				<td><input type="text" name="add_date"></td>
+				<td><input type="text" name="add_date" value="<?php echo date("Y-m-d H:i:s"); ?>"></td>
 			</tr>
 			<tr>
 				<td>Title:</td>
