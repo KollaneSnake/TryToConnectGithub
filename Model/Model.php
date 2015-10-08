@@ -44,7 +44,7 @@ function get_all_posts()
 	close_database_connection($link);
 	return $posts;
 }
-function get_all_post($id)
+function get_post($id)
 {
 	#opens connection to db
 	$link=open_database_connection();
@@ -55,5 +55,5 @@ function get_all_post($id)
 	#close connection to db
 	$post=mysql_fetch_assoc($result);
 	close_database_connection($link);
-	return $posts;
+	return $post;
 }

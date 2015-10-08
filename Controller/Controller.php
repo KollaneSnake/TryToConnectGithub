@@ -15,7 +15,12 @@
 	function show_action($id)
 	{
 		$post=get_post($id);
-		require "View/Templates/showpost.php";
+		require "View/Templates/show.php";
+	}
+	function render_template($path, array $args)
+	{
+		extract($args);
+
 	}
 
 ?>
