@@ -19,13 +19,17 @@
 	}
 	function add_action($id)
 	{
-		if (isset($_POST['add_autor'])) {
+		if (!empty($_POST['add_autor'])) {
 			add_post();
 		}
 		#add_post();
 		require "View/Templates/admin.php";
 		$posts=get_all_posts();
 		require "View/Templates/List.php";
+	}
+	function contact_action()
+	{
+		require "View/Templates/contact.php";
 	}
 
 ?>
