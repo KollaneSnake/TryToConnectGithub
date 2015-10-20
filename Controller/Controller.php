@@ -2,7 +2,7 @@
 	/**
 	* Comment Controller
 	*/
-	function list_action()
+	function list_actions()
 	{
 		$posts=get_all_posts();
 
@@ -32,4 +32,18 @@
 		require "View/Templates/contact.php";
 	}
 
-?>
+	function render_template($path, array $args)
+	{
+		extract($args);
+		ob_start();
+		require $path;
+		$html=ob_get_clean();
+		return $html;
+	}
+	function list_action()
+	{
+		$posts=get_all_posts();
+		$html=render_template('View/Templates/List.php', array('posts' => $posts));
+
+		return $html;
+	}

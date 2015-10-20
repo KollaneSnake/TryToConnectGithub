@@ -6,6 +6,7 @@
 	include_once 'Controller/Controller.php';
 
 	include_once 'Route/routing.php';
+	echo $response;
 
 ?>
 
