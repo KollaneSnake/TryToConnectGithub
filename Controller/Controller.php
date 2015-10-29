@@ -5,27 +5,25 @@
 	function list_actions()
 	{
 		$posts=get_all_posts();
-
 		require "View/Templates/List.php";
 	}
 	function admin_action()
 	{
-		require "View/Templates/admin.php";
+		$html =render_template('View/Templates/admin.php', array());
+		return $html;
 	}
 	function show_action($id)
 	{
 		$post=get_post($id);
-		require "View/Templates/show.php";
+		$html= render_template('',array('post'=>$post));
+		return $html;
 	}
 	function add_action($id)
 	{
 		if (!empty($_POST['add_autor'])) {
 			add_post();
 		}
-		#add_post();
-		require "View/Templates/admin.php";
-		$posts=get_all_posts();
-		require "View/Templates/List.php";
+		header('location:../index.php');
 	}
 	function contact_action()
 	{
@@ -46,4 +44,9 @@
 		$html=render_template('View/Templates/List.php', array('posts' => $posts));
 
 		return $html;
+	}
+	function remove_action($id)
+	{
+		$post = remove_post($id);
+		header('Location: ../index.php');
 	}

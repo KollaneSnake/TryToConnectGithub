@@ -75,3 +75,15 @@ function add_post()
 	close_database_connection($link);
 	#return $post;
 }
+function edit_post($id)
+{
+	$author = $_REQUEST ['add_author'];
+	$time = $_REQUEST['time'];
+	$title = $_REQUEST['add_title'];
+	$content = $_REQUEST['add_content'];
+	$link = open_database_connection();
+	$query = "UPDATE post SET author = '$author', time = '$time', title = '$title', content = '$content' WHERE id = $id;";
+	
+	mysql_query($query, $link);
+	close_database_connection($link);
+}
