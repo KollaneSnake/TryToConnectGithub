@@ -15,7 +15,7 @@
 	function show_action($id)
 	{
 		$post=get_post($id);
-		$html= render_template('',array('post'=>$post));
+		$html= render_template('View/Templates/show.php',array('post'=>$post));
 		return $html;
 	}
 	function add_action($id)
