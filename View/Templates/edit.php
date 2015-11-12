@@ -1,31 +1,39 @@
+<?php $title = 'Редактирование'; ?>
+
 <?php ob_start() ?>
 
-<h2>Редактирование</h2>
+<h2><a href="../index.php/show?id=<?php echo $post['id'];?>" class="fa fa-chevron-left"></a> Пост #<?php echo $Post['id'];?> <b>Редактирование</b></h2>
+<hr>
 <form method="POST">
-<table>
-	<tr>
-		<td>Автор:</td>
-		<td><input type="text" name="add_author" value="<?php echo $post['author'];?>"></td>
-	</tr>
-	<tr>
-		<td>Дата:</td>
-		<td><input type="text" name="add_time" value="<?php echo $post['time'];?>"></td>
-	</tr>
-	<tr>
-		<td>Заголовок: <b>*</b></td>
-		<td><input type="text" name="add_title" value="<?php echo $post['title'];?>"></td>
-	</tr>
-	<tr>
-		<td>Текст:</td>
-		<td><textarea rows="10" cols="45" name="add_content"><?php echo $post['content'];?></textarea></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><input type="submit" name="submit" value="Изменить">
-	</tr>
-</table>
+	<table class='table-condensed'>
+		<tr>
+			<td><b>Автор:</b></td>
+			<td><input type="text" class="form-control" name="add_author" value="<?php echo $Post['autor'];?>"></td>
+		</tr>
+		<tr>
+			<td><b>Дата:</b></td>
+			<td>
+				<input type="text" class="form-control" name="add_time" value="<?php echo $Post['date'];?>">
+			</td>
+		</tr>
+		<tr>
+			<td><b>Заголовок:</b></td>
+			<td><input type="text" class="form-control" name="add_title" value="<?php echo $Post['title'];?>"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;"><b>Текст:</b></td>
+			<td><textarea rows="10" cols="45" class="form-control" name="add_content"><?php echo $Post['content'];?></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<button type="submit" name="edit_post" class="btn btn-default"><i class="fa fa-floppy-o"></i> Сохранить</button>
+			</td>
+		</tr>
+	</table>
 </form>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php include "view/templates/layout.php"; ?>
+<?php include "View/Templates/layout.php"; ?>

@@ -1,52 +1,81 @@
 <?php
-	/**
-	* Comment Controller
-	*/
-	function list_actions()
+// ------------------------------------------------
+function render_template($path, array $args)
+{
+	extract($args);
+	ob_start();
+	require $path;
+	$html = ob_get_clean();
+	return $html;
+}
+// ------------------------------------------------
+// Загрузка постов
+function list_action()
+{
+	$model= new PostsModel();
+	$posts = $model->get_all_posts();
+	$html = render_template('View/Templates/list.php', array('posts' => $posts));
+	return $html;
+}
+// Добавление поста
+function admin_action()
+{
+	$html = render_template('View/Templates/admin.php', array());
+
+	if (isset($_POST['submit']) && !empty($_POST['add_title']))
 	{
-		$posts=get_all_posts();
-		require "View/Templates/List.php";
-	}
-	function admin_action()
-	{
-		$html =render_template('View/Templates/admin.php', array());
-		return $html;
-	}
-	function show_action($id)
-	{
-		$post=get_post($id);
-		$html= render_template('View/Templates/show.php',array('post'=>$post));
-		return $html;
-	}
-	function add_action($id)
-	{
-		if (!empty($_POST['add_autor'])) {
-			add_post();
-		}
-		header('location:../index.php');
-	}
-	function contact_action()
-	{
-		require "View/Templates/contact.php";
+    	add_post();
+    	header("location: ../index.php");
 	}
 
-	function render_template($path, array $args)
-	{
-		extract($args);
-		ob_start();
-		require $path;
-		$html=ob_get_clean();
-		return $html;
-	}
-	function list_action()
-	{
-		$posts=get_all_posts();
-		$html=render_template('View/Templates/List.php', array('posts' => $posts));
+	return $html;
+}
+// Просмотр поста
+function show_action($id)
+{
+	$model= new PostsModel();
+	/*$post = get_post($id);*/
+	$post = $model->get_post_by_id($id);
+	$html = render_template('View/Templates/show.php', array('post' => $post));
+	return $html;
+}
+// Редактирование
+function edit_action($id)
+{
+	$model= new PostsModel();
+	$post = get_post($id);
+	/*$post = $model->update();*/
+	$html = render_template('View/Templates/edit.php', array('post' => $post));
 
-		return $html;
-	}
-	function remove_action($id)
+	if (isset($_POST['edit_post']))
 	{
-		$post = remove_post($id);
-		header('Location: ../index.php');
+    	edit_post($id);
+    	header("location: ../index.php/show?id=".$id);
 	}
+
+	return $html;
+}
+function add_action()
+{
+	
+}
+// Удаление
+function remove_action($id)
+{
+	$post = remove_post($id);
+	header('Location: ../index.php');
+}
+// ------------------------------------------------
+// 		ДОПОЛНИТЕЛЬНЫЕ СТРАНИЦЫ
+// ------------------------------------------------
+function about_action()
+{
+	$html = render_template('View/Templates/about.php', array());
+	return $html;
+}
+function error_404()
+{
+	$html = render_template('View/Templates/error_404.php', array());
+	return $html;
+}
+?>

@@ -1,28 +1,34 @@
+<?php $title = 'Новый пост'; ?>
+
 <?php ob_start() ?>
-	<h2>Administration</h2>
-	<form action="add" method="POST" name="form1">
-		<table>
-			<tr>
-				<td>Autor:</td>
-				<td><input type="text" name="add_autor"></td>
-			</tr>
-			<tr>
-				<td>Date:</td>
-				<td><input type="text" name="add_date" value="<?php echo date("Y-m-d H:i:s"); ?>"></td>
-			</tr>
-			<tr>
-				<td>Title:</td>
-				<td><input type="text" name="add_title"></td>
-			</tr>
-			<tr>
-				<td>Content:</td>
-				<td><textarea name="add_content"></textarea></td>
-			</tr>
-			<tr>
-				<td><input type="reset" name="reset" value="Clear"></td>
-				<td><input type="submit" name="submit" value="Submit"></td>
-			</tr>
-		</table>
-	</form>
-<?php $content=ob_get_clean(); ?>
-	<?php include "View/Templates/Layout.php";
+
+<h2><a href="../index.php" class="fa fa-chevron-left"></a> Новый пост</h2>
+<hr>
+<div class="col-xs-4">
+<form method="POST">
+	<div class="form-group">
+	 	<label for="add_author">Автор</label>
+	 	<input type="text" class="form-control" name="add_author">
+	</div>
+	<div class="form-group">
+	 	<label for="add_time">Время</label>
+	 	<input type="text" class="form-control" name="add_time" value='<?php echo date("Y-m-d H:i:s"); ?>'>
+	</div>
+	<div class="form-group">
+	 	<label for="add_title">Заголовок *</label>
+	 	<input type="text" class="form-control" name="add_title">
+	</div>
+	<div class="form-group">
+	 	<label for="add_content">Текст</label>
+	 	<textarea rows="10" cols="45" name="add_content" class="form-control"></textarea>
+	</div>
+	<button type="submit" id="submit" name="submit" class="btn btn-default"><i class="fa fa-plus"></i>
+ Добавить</button> 
+	<button type="reset" reset="" name="" class="btn btn-default"><i class="fa fa-eraser"></i>
+ Очистить</button>
+</form>
+</div>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php include "View/Templates/layout.php";
