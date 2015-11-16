@@ -24,7 +24,9 @@ function admin_action()
 
 	if (isset($_POST['submit']) && !empty($_POST['add_title']))
 	{
-    	add_post();
+		$model= new PostsModel();
+		$model->add_post();
+    	/*add_post();*/
     	header("location: ../index.php");
 	}
 
@@ -43,13 +45,13 @@ function show_action($id)
 function edit_action($id)
 {
 	$model= new PostsModel();
-	$post = get_post($id);
-	/*$post = $model->update();*/
+	/*$post = get_post($id);*/
+	$post = $model->get_post_by_id($id);
 	$html = render_template('View/Templates/edit.php', array('post' => $post));
 
 	if (isset($_POST['edit_post']))
 	{
-    	edit_post($id);
+    	$model->update($id);
     	header("location: ../index.php/show?id=".$id);
 	}
 

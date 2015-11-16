@@ -2,7 +2,7 @@
 
 $uri = $_SERVER['REQUEST_URI'];
 $uri = explode('?', $uri)[0];
-echo $uri;
+/*echo $uri;*/
 $personal_uri = '/'. explode('/', $uri)[1]. '/'. explode('/', $uri)[2]. '/';
 echo $personal_uri;
 

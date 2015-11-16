@@ -7,12 +7,12 @@
 <div class="col-xs-4">
 <form method="POST">
 	<div class="form-group">
-	 	<label for="add_author">Автор</label>
-	 	<input type="text" class="form-control" name="add_author">
+	 	<label for="add_autor">Автор</label>
+	 	<input type="text" class="form-control" name="add_autor">
 	</div>
 	<div class="form-group">
-	 	<label for="add_time">Время</label>
-	 	<input type="text" class="form-control" name="add_time" value='<?php echo date("Y-m-d H:i:s"); ?>'>
+	 	<label for="add_date">Время</label>
+	 	<input type="text" class="form-control" name="add_date" value='<?php echo date("Y-m-d H:i:s"); ?>'>
 	</div>
 	<div class="form-group">
 	 	<label for="add_title">Заголовок *</label>

@@ -14,7 +14,9 @@ class PostsModel
 	*/
 	function PostsModel()
 	{	
-		$dsn = "mysql:host=$this->host;dbname=$this->db;charset=$this->charset";
+		$dsn = "mysql:host=$this->host;
+					  dbname=$this->db;
+					  charset=$this->charset";
 
 		$opt = array(
 		    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -92,10 +94,9 @@ class PostsModel
 			$add_date= date("Y-m-d H:i:s");
 			$add_title=$_REQUEST['add_title'];
 			$add_content=$_REQUEST['add_content'];
-			$sql="INSERT INTO post (`date`,autor,title,content) VALUES (?, ?, ?, ?)";
+			$sql="INSERT INTO Post (`date`,autor,title,content) VALUES (?, ?, ?, ?)";
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($add_date,$add_autor,
-				$add_title,$add_content));
+			$stmt->execute(array($add_date,$add_autor,$add_title,$add_content));
 			//$link = open_database_connection();
 			//	mysql_query($sql, $link) OR die("Запрос не выполнен ".mysql_error());
 			//close_database_connection($link);
@@ -112,9 +113,9 @@ class PostsModel
 	public function update(){
 		
 		if(empty($_REQUEST['id'])
-			AND empty($_REQUEST['add_autor']) 
-					AND empty($_REQUEST['add_title']) 
-						AND empty($_REQUEST['add_content'])){
+			AND (empty($_REQUEST['add_autor']) AND $_REQUEST['add_autor']=="")
+					AND (empty($_REQUEST['add_title']) AND $_REQUEST['add_autor']=="")
+						AND (empty($_REQUEST['add_content']) AND $_REQUEST['add_autor']=="")){
 			echo "Пропущена запись!";
 			return false;
 		}
@@ -123,10 +124,10 @@ class PostsModel
 			$add_date=date("Y-m-d H:i:s");
 			$add_title=$_REQUEST['add_title'];
 			$add_content=$_REQUEST['add_content'];
-			$sql="UPDATE `post` SET `date`=?,`autor`=?,
+			$sql="UPDATE `Post` SET `date`=?,`autor`=?,
 				`title`=?,`content`=? WHERE id=?";
 			$stmt = $this->dbh->prepare($sql);
-			$stmt->execute(array($date,$autor,$title,$content,$id));
+			$stmt->execute(array($add_date,$add_autor,$add_title,$add_content,$id));
 			// $link = open_database_connection();
 			// 	mysql_query($sql, $link) OR die("Запрос не выполнен ".mysql_error());
 			// close_database_connection($link);
